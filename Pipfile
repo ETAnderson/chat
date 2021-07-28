@@ -8,6 +8,7 @@ django = "*"
 channels = "*"
 docker = "*"
 redis-server = "*"
+channels-redis = "*"
 
 [dev-packages]
 flake8 = "*"

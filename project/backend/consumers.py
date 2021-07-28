@@ -7,10 +7,9 @@ from channels.generic.websocket import WebsocketConsumer
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
-        """
-        Connect to a chat room
-        Spaces are replaced like this: 'My new room' -> 'My_new_room'
-        """
+
+        # Connect to a chat room
+        # Spaces are replaced like this: 'My new room' -> 'My_new_room'
 
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_name = self.room_name.replace(' ', '_')
@@ -31,10 +30,9 @@ class ChatConsumer(WebsocketConsumer):
         )
 
     def receive(self, text_data):
-        """
-        Receive a message and broadcast it to a room group
-        UTC time is included so the client can display it in each user's local time
-        """
+
+        # Receive a message and broadcast it to a room group
+        # UTC time is included so the client can display it in each user's local time
 
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
@@ -51,9 +49,8 @@ class ChatConsumer(WebsocketConsumer):
         )
 
     def chat_message(self, event):
-        """
-        Receive a broadcast message and send it over a websocket
-        """
+
+        # Receive a broadcast message and send it over a websocket
 
         message = event['message']
         utc_time = event['utc_time']

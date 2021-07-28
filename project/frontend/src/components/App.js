@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-
+import moment from 'moment';
 
 class App extends Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class App extends Component {
         chatSocket.onmessage = (e) => {
             var data = JSON.parse(e.data);
             var message = {text: data.message, date: data.utc_time};
-	    message.date = moment(message.date).local().format('YYYY-MM-DD HH:mm:ss');
+	        message.date = moment(message.date).local().format('YYYY-MM-DD HH:mm:ss');
 	    
             let updated_messages = [...this.state.messages];
             updated_messages.push(message);
